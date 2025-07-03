@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Aritméticas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            text-align: center;
+        }
+        input {
+            width: 100px;
+            padding: 5px;
+            margin: 10px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ingrese dos números enteros</h1>
+
+    <input type="number" id="numero1" placeholder="Número 1">
+    <input type="number" id="numero2" placeholder="Número 2">
+    <br>
+
+    <button onclick="operar('sumar')">Sumar</button>
+    <button onclick="operar('restar')">Restar</button>
+    <button onclick="operar('multiplicar')">Multiplicar</button>
+    <button onclick="operar('dividir')">Dividir</button>
+
+    <p id="resultado">Resultado: </p>
+
+    <script>
+        function operar(operacion) {
+            let n1 = parseFloat(document.getElementById("numero1").value);
+            let n2 = parseFloat(document.getElementById("numero2").value);
+
+            if (isNaN(n1) || isNaN(n2)) {
+                document.getElementById("resultado").textContent = "Por favor, ingresa números válidos.";
+                return;
+            }
+
+            let resultado;
+
+            switch (operacion) {
+                case 'sumar':
+                    resultado = n1 + n2;
+                    break;
+                case 'restar':
+                    resultado = n1 - n2;
+                    break;
+                case 'multiplicar':
+                    resultado = n1 * n2;
+                    break;
+                case 'dividir':
+                    if (n2 === 0) {
+                        document.getElementById("resultado").textContent = "No se puede dividir entre cero.";
+                        return;
+                    }
+                    resultado = n1 / n2;
+                    break;
+            }
+
+            document.getElementById("resultado").textContent = "Resultado: " + resultado;
+        }
+    </script>
+
+</body>
+</html>
